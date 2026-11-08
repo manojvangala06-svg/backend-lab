@@ -1,0 +1,280 @@
+{
+  "info": {
+    "_postman_id": "b1e2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "name": "Lab 3: REST API Tests - Books Collection",
+    "description": "Comprehensive Postman test collection for Lab 3: REST API, query parameters, validation, and debugging (Backend Development Fundamentals). Covers all success and failure cases.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. GET /books - Default List (Pagination limit=10, offset=0)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. GET /books - Search by Partial Title (search_q=Harry)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?search_q=Harry",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"],
+          "query": [
+            { "key": "search_q", "value": "Harry" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. GET /books - Sort by Price Descending (order_by=price&order=DESC)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?order_by=price&order=DESC",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"],
+          "query": [
+            { "key": "order_by", "value": "price" },
+            { "key": "order", "value": "DESC" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. GET /books - Sort by Title Ascending (order_by=title&order=ASC)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?order_by=title&order=ASC",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"],
+          "query": [
+            { "key": "order_by", "value": "title" },
+            { "key": "order", "value": "ASC" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. GET /books - Price Range Filter (min_price=20&max_price=40)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?min_price=20&max_price=40",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"],
+          "query": [
+            { "key": "min_price", "value": "20" },
+            { "key": "max_price", "value": "40" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. GET /books - Pagination Limit and Offset (limit=3&offset=3)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?limit=3&offset=3",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"],
+          "query": [
+            { "key": "limit", "value": "3" },
+            { "key": "offset", "value": "3" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. GET /books/:id - Get Single Book by ID (Success - 200)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "8. GET /books/:id - Non-existent ID (Failure - 404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/9999",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "9999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. POST /books - Create New Book (Success - 201)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Pragmatic Programmer\",\n  \"author\": \"Andy Hunt & Dave Thomas\",\n  \"price\": 49.99\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10. POST /books - Missing Title (Validation Failure - 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"author\": \"Martin Fowler\",\n  \"price\": 39.99\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "11. POST /books - Missing Author (Validation Failure - 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Domain-Driven Design\",\n  \"price\": 55.00\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "12. POST /books - Non-numeric Price (Validation Failure - 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Clean Architecture\",\n  \"author\": \"Robert C. Martin\",\n  \"price\": \"free_version\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "13. PUT /books/:id - Update Book (Success - 200)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Great Gatsby (Special Edition)\",\n  \"author\": \"F. Scott Fitzgerald\",\n  \"price\": 18.50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "14. PUT /books/:id - Non-existent ID (Failure - 404)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Unknown\",\n  \"author\": \"Unknown\",\n  \"price\": 10.00\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/9999",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "9999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "15. DELETE /books/:id - Delete Existing Book (Success - 200)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/10",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "10"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "16. DELETE /books/:id - Non-existent ID (Failure - 404)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/9999",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "9999"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

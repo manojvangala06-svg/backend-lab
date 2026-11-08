@@ -1,0 +1,507 @@
+[
+  {
+    "id": "01_get_books_default",
+    "name": "1. GET /books - Default List (Pagination limit=10, offset=0)",
+    "category": "Query Parameters & Pagination",
+    "method": "GET",
+    "endpoint": "/books",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 31,
+    "passed": true,
+    "responseBody": [
+      {
+        "id": 1,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 15.99
+      },
+      {
+        "id": 2,
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "price": 42.5
+      },
+      {
+        "id": 3,
+        "title": "JavaScript: The Good Parts",
+        "author": "Douglas Crockford",
+        "price": 29.99
+      },
+      {
+        "id": 4,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "price": 24.95
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "price": 25.5
+      },
+      {
+        "id": 6,
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "price": 85
+      },
+      {
+        "id": 7,
+        "title": "Node.js Web Development",
+        "author": "David Herron",
+        "price": 34.99
+      },
+      {
+        "id": 8,
+        "title": "Refactoring: Improving the Design of Existing Code",
+        "author": "Martin Fowler",
+        "price": 48
+      },
+      {
+        "id": 9,
+        "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+        "author": "Erich Gamma",
+        "price": 54
+      },
+      {
+        "id": 10,
+        "title": "You Don't Know JS: Scope & Closures",
+        "author": "Kyle Simpson",
+        "price": 19.99
+      }
+    ],
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\01_get_books_default.png"
+  },
+  {
+    "id": "02_get_books_search",
+    "name": "2. GET /books - Search by Partial Title (search_q=Harry)",
+    "category": "Search Query (LIKE %q%)",
+    "method": "GET",
+    "endpoint": "/books?search_q=Harry",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 4,
+    "passed": true,
+    "responseBody": [
+      {
+        "id": 4,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "price": 24.95
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "price": 25.5
+      }
+    ],
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\02_get_books_search.png"
+  },
+  {
+    "id": "03_get_books_sort_price_desc",
+    "name": "3. GET /books - Sort by Price Descending (order_by=price&order=DESC)",
+    "category": "Sorting",
+    "method": "GET",
+    "endpoint": "/books?order_by=price&order=DESC",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 2,
+    "passed": true,
+    "responseBody": [
+      {
+        "id": 6,
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "price": 85
+      },
+      {
+        "id": 9,
+        "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+        "author": "Erich Gamma",
+        "price": 54
+      },
+      {
+        "id": 8,
+        "title": "Refactoring: Improving the Design of Existing Code",
+        "author": "Martin Fowler",
+        "price": 48
+      },
+      {
+        "id": 2,
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "price": 42.5
+      },
+      {
+        "id": 7,
+        "title": "Node.js Web Development",
+        "author": "David Herron",
+        "price": 34.99
+      },
+      {
+        "id": 3,
+        "title": "JavaScript: The Good Parts",
+        "author": "Douglas Crockford",
+        "price": 29.99
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "price": 25.5
+      },
+      {
+        "id": 4,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "price": 24.95
+      },
+      {
+        "id": 10,
+        "title": "You Don't Know JS: Scope & Closures",
+        "author": "Kyle Simpson",
+        "price": 19.99
+      },
+      {
+        "id": 1,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 15.99
+      }
+    ],
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\03_get_books_sort_price_desc.png"
+  },
+  {
+    "id": "04_get_books_sort_title_asc",
+    "name": "4. GET /books - Sort by Title Ascending (order_by=title&order=ASC)",
+    "category": "Sorting",
+    "method": "GET",
+    "endpoint": "/books?order_by=title&order=ASC",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 2,
+    "passed": true,
+    "responseBody": [
+      {
+        "id": 2,
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "price": 42.5
+      },
+      {
+        "id": 9,
+        "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+        "author": "Erich Gamma",
+        "price": 54
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "price": 25.5
+      },
+      {
+        "id": 4,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "price": 24.95
+      },
+      {
+        "id": 6,
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "price": 85
+      },
+      {
+        "id": 3,
+        "title": "JavaScript: The Good Parts",
+        "author": "Douglas Crockford",
+        "price": 29.99
+      },
+      {
+        "id": 7,
+        "title": "Node.js Web Development",
+        "author": "David Herron",
+        "price": 34.99
+      },
+      {
+        "id": 8,
+        "title": "Refactoring: Improving the Design of Existing Code",
+        "author": "Martin Fowler",
+        "price": 48
+      },
+      {
+        "id": 1,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 15.99
+      },
+      {
+        "id": 10,
+        "title": "You Don't Know JS: Scope & Closures",
+        "author": "Kyle Simpson",
+        "price": 19.99
+      }
+    ],
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\04_get_books_sort_title_asc.png"
+  },
+  {
+    "id": "05_get_books_price_range",
+    "name": "5. GET /books - Price Range Filter (min_price=20&max_price=40)",
+    "category": "Price Filter (BETWEEN)",
+    "method": "GET",
+    "endpoint": "/books?min_price=20&max_price=40",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 2,
+    "passed": true,
+    "responseBody": [
+      {
+        "id": 3,
+        "title": "JavaScript: The Good Parts",
+        "author": "Douglas Crockford",
+        "price": 29.99
+      },
+      {
+        "id": 4,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "price": 24.95
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "price": 25.5
+      },
+      {
+        "id": 7,
+        "title": "Node.js Web Development",
+        "author": "David Herron",
+        "price": 34.99
+      }
+    ],
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\05_get_books_price_range.png"
+  },
+  {
+    "id": "06_get_books_pagination",
+    "name": "6. GET /books - Pagination Offset & Limit (limit=3&offset=3)",
+    "category": "Pagination",
+    "method": "GET",
+    "endpoint": "/books?limit=3&offset=3",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 1,
+    "passed": true,
+    "responseBody": [
+      {
+        "id": 4,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "price": 24.95
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "price": 25.5
+      },
+      {
+        "id": 6,
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "price": 85
+      }
+    ],
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\06_get_books_pagination.png"
+  },
+  {
+    "id": "07_get_book_by_id_success",
+    "name": "7. GET /books/:id - Get Single Book by ID (Success)",
+    "category": "Path Parameter",
+    "method": "GET",
+    "endpoint": "/books/1",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 2,
+    "passed": true,
+    "responseBody": {
+      "id": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": 15.99
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\07_get_book_by_id_success.png"
+  },
+  {
+    "id": "08_get_book_by_id_not_found",
+    "name": "8. GET /books/:id - Non-existent ID (Failure)",
+    "category": "Error Handling",
+    "method": "GET",
+    "endpoint": "/books/9999",
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "duration": 2,
+    "passed": true,
+    "responseBody": {
+      "message": "Book not found"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\08_get_book_by_id_not_found.png"
+  },
+  {
+    "id": "09_post_book_success",
+    "name": "9. POST /books - Create New Book (Success)",
+    "category": "Resource Creation",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "Pragmatic Programmer",
+      "author": "Andy Hunt & Dave Thomas",
+      "price": 49.99
+    },
+    "expectedStatus": 201,
+    "actualStatus": 201,
+    "duration": 26,
+    "passed": true,
+    "responseBody": {
+      "id": 11,
+      "title": "Pragmatic Programmer",
+      "author": "Andy Hunt & Dave Thomas",
+      "price": 49.99
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\09_post_book_success.png"
+  },
+  {
+    "id": "10_post_book_missing_title",
+    "name": "10. POST /books - Missing Title Validation (Failure)",
+    "category": "Input Validation",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "author": "Martin Fowler",
+      "price": 39.99
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "duration": 2,
+    "passed": true,
+    "responseBody": {
+      "message": "Title is required"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\10_post_book_missing_title.png"
+  },
+  {
+    "id": "11_post_book_missing_author",
+    "name": "11. POST /books - Missing Author Validation (Failure)",
+    "category": "Input Validation",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "Domain-Driven Design",
+      "price": 55
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "duration": 1,
+    "passed": true,
+    "responseBody": {
+      "message": "Author is required"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\11_post_book_missing_author.png"
+  },
+  {
+    "id": "12_post_book_non_numeric_price",
+    "name": "12. POST /books - Non-numeric Price Validation (Failure)",
+    "category": "Input Validation",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "Clean Architecture",
+      "author": "Robert C. Martin",
+      "price": "not_a_number"
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "duration": 2,
+    "passed": true,
+    "responseBody": {
+      "message": "Price must be a valid number"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\12_post_book_non_numeric_price.png"
+  },
+  {
+    "id": "13_put_book_success",
+    "name": "13. PUT /books/:id - Update Book Details (Success)",
+    "category": "Resource Update",
+    "method": "PUT",
+    "endpoint": "/books/1",
+    "body": {
+      "title": "The Great Gatsby (Collector Edition)",
+      "author": "F. Scott Fitzgerald",
+      "price": 18.5
+    },
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 6,
+    "passed": true,
+    "responseBody": {
+      "id": 1,
+      "title": "The Great Gatsby (Collector Edition)",
+      "author": "F. Scott Fitzgerald",
+      "price": 18.5
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\13_put_book_success.png"
+  },
+  {
+    "id": "14_put_book_not_found",
+    "name": "14. PUT /books/:id - Update Non-existent ID (Failure)",
+    "category": "Error Handling",
+    "method": "PUT",
+    "endpoint": "/books/9999",
+    "body": {
+      "title": "Ghost Book",
+      "author": "Unknown",
+      "price": 12
+    },
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "duration": 2,
+    "passed": true,
+    "responseBody": {
+      "message": "Book not found"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\14_put_book_not_found.png"
+  },
+  {
+    "id": "15_delete_book_success",
+    "name": "15. DELETE /books/:id - Delete Existing Book (Success)",
+    "category": "Resource Deletion",
+    "method": "DELETE",
+    "endpoint": "/books/10",
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "duration": 17,
+    "passed": true,
+    "responseBody": {
+      "message": "Book deleted successfully"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\15_delete_book_success.png"
+  },
+  {
+    "id": "16_delete_book_not_found",
+    "name": "16. DELETE /books/:id - Delete Non-existent ID (Failure)",
+    "category": "Error Handling",
+    "method": "DELETE",
+    "endpoint": "/books/9999",
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "duration": 1,
+    "passed": true,
+    "responseBody": {
+      "message": "Book not found"
+    },
+    "screenshotPath": "C:\\Users\\Manoj Kumar\\.gemini\\antigravity\\scratch\\lab3-rest-api\\screenshots\\16_delete_book_not_found.png"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "lab3-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "docx": "^9.15.3",
+    "express": "^5.3.0",
+    "isomorphic-git": "^1.44.11",
+    "puppeteer-core": "^25.16.0"
+  }
+}

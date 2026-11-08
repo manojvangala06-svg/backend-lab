@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #1e1e1e; color: #d4d4d4; padding: 20px; width: 1000px; }
+  .window { background: #252526; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; border: 1px solid #3c3c3c; }
+  .title-bar { background: #323233; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #3c3c3c; }
+  .traffic-lights { display: flex; gap: 8px; }
+  .light { width: 12px; height: 12px; border-radius: 50%; }
+  .red { background: #ff5f56; }
+  .yellow { background: #ffbd2e; }
+  .green { background: #27c93f; }
+  .app-title { font-size: 13px; font-weight: 600; color: #cccccc; display: flex; align-items: center; gap: 8px; }
+  .badge-pm { background: #ff6c37; color: white; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+  .content { padding: 20px; }
+  .test-title { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+  .test-category { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: #383838; color: #858585; text-transform: uppercase; letter-spacing: 0.5px; }
+  .url-bar { display: flex; background: #1e1e1e; border: 1px solid #3c3c3c; border-radius: 4px; overflow: hidden; margin-bottom: 16px; height: 38px; align-items: center; }
+  .method { background: #2d2d2d; color: #0cbb52; font-weight: 700; font-size: 13px; padding: 0 16px; line-height: 38px; border-right: 1px solid #3c3c3c; }
+  .url { flex: 1; padding: 0 14px; font-family: "Consolas", monospace; font-size: 13px; color: #9cdcfe; }
+  .send-btn { background: #097bed; color: white; font-weight: 600; font-size: 13px; padding: 0 20px; height: 100%; border: none; display: flex; align-items: center; }
+  .req-body { margin-bottom: 16px; background: #1b1b1b; border: 1px solid #333; border-radius: 4px; padding: 10px 14px; }
+  .section-label { font-size: 11px; text-transform: uppercase; color: #888; font-weight: 700; margin-bottom: 6px; }
+  .code-req { font-family: "Consolas", monospace; font-size: 12px; color: #ce9178; white-space: pre-wrap; }
+  .response-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 12px; }
+  .resp-label { font-size: 13px; font-weight: 600; color: #e0e0e0; }
+  .meta-badges { display: flex; gap: 16px; font-size: 12px; }
+  .meta-item { display: flex; gap: 6px; }
+  .meta-key { color: #888; }
+  .meta-val { font-weight: 700; color: #0cbb52; font-family: "Consolas", monospace; }
+  .response-body { background: #1e1e1e; border: 1px solid #333; border-radius: 4px; padding: 14px; max-height: 400px; overflow-y: auto; }
+  pre { font-family: "Consolas", "Courier New", monospace; font-size: 12.5px; line-height: 1.5; color: #d4d4d4; }
+  .footer { margin-top: 14px; font-size: 11px; color: #666; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="title-bar">
+    <div class="traffic-lights">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+    </div>
+    <div class="app-title"><span class="badge-pm">POSTMAN</span> Lab 3 REST API Verification</div>
+    <div style="font-size: 11px; color: #888;">HTTP/1.1</div>
+  </div>
+  <div class="content">
+    <div class="test-title">
+      <span>6. GET /books - Pagination Offset & Limit (limit=3&offset=3)</span>
+      <span class="test-category">Pagination</span>
+    </div>
+    <div class="url-bar">
+      <div class="method">GET</div>
+      <div class="url">http://localhost:3000/books?limit=3&offset=3</div>
+      <div class="send-btn">Send</div>
+    </div>
+    
+    <div class="response-header">
+      <div class="resp-label">Response Body (JSON)</div>
+      <div class="meta-badges">
+        <div class="meta-item"><span class="meta-key">Status:</span><span class="meta-val">200 OK</span></div>
+        <div class="meta-item"><span class="meta-key">Time:</span><span class="meta-val" style="color:#0cbb52">1 ms</span></div>
+        <div class="meta-item"><span class="meta-key">Size:</span><span class="meta-val" style="color:#0cbb52">277 B</span></div>
+      </div>
+    </div>
+    <div class="response-body">
+      <pre>[
+  {
+    &quot;id&quot;: 4,
+    &quot;title&quot;: &quot;Harry Potter and the Sorcerer&#039;s Stone&quot;,
+    &quot;author&quot;: &quot;J.K. Rowling&quot;,
+    &quot;price&quot;: 24.95
+  },
+  {
+    &quot;id&quot;: 5,
+    &quot;title&quot;: &quot;Harry Potter and the Chamber of Secrets&quot;,
+    &quot;author&quot;: &quot;J.K. Rowling&quot;,
+    &quot;price&quot;: 25.5
+  },
+  {
+    &quot;id&quot;: 6,
+    &quot;title&quot;: &quot;Introduction to Algorithms&quot;,
+    &quot;author&quot;: &quot;Thomas H. Cormen&quot;,
+    &quot;price&quot;: 85
+  }
+]</pre>
+    </div>
+    <div class="footer">
+      <span>Test Verdict: <strong style="color: #0cbb52">PASSED (Status 200 Matched)</strong></span>
+      <span>Backend Development Fundamentals · Year II Term II · Aurora</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

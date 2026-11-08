@@ -8,7 +8,17 @@
 ---
 
 ## 📌 Project Overview
-This repository contains the complete implementation of **Lab 3: RESTful API Development**, building upon Lab 2 to provide a production-ready, standardized REST API for a `/books` collection with parameterized SQLite queries, search, sorting, range filtering, pagination, robust input validation, and proper HTTP status code handling.
+This repository contains the complete implementation of **Lab 3: RESTful API Development**, building upon Lab 2 to provide a production-ready, standardized REST API for a `/books` collection with parameterized SQLite queries, search, sorting, range filtering, pagination, robust input validation, proper HTTP status code handling, and an interactive static web showcase deployed on Vercel.
+
+---
+
+## 🌐 Live Interactive Web Showcase
+An interactive browser client is included (`index.html`) allowing anyone to test all endpoints, filters, pagination, and validation rules in real time without local setup:
+- **Repository:** [https://github.com/manojvangala06-svg/backend-lab](https://github.com/manojvangala06-svg/backend-lab)
+- **Deployment:** Vercel (Auto-deployed from `main`)
+- **Interactive Sandbox:** Live query simulator with instant status badges (`200`, `201`, `400`, `404`) and formatted JSON.
+- **QA Matrix:** Visual breakdown of all 16 test cases.
+- **Debugging Walkthrough:** Code diffs for the 4 lab debugging problems.
 
 ---
 
@@ -61,8 +71,8 @@ lab3-rest-api/
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
-   cd lab3-rest-api
+   git clone https://github.com/manojvangala06-svg/backend-lab.git
+   cd backend-lab
    ```
 
 2. **Install dependencies:**

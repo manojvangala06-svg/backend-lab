@@ -18,8 +18,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// Root endpoint welcome message
+// Serve static files for documentation showcase (style.css, app.js, etc.)
+app.use(express.static(__dirname));
+
+// Root endpoint: serves interactive showcase for browser, or JSON schema for API clients
 app.get('/', (req, res) => {
+  if (req.accepts('html')) {
+    return res.sendFile(path.join(__dirname, 'index.html'));
+  }
   res.status(200).json({
     message: 'Backend Development Fundamentals - Lab 3 REST API is running!',
     endpoints: {
@@ -73,3 +79,4 @@ if (require.main === module) {
 }
 
 module.exports = { app, startServer };
+

@@ -21,3 +21,10 @@ npm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Temporary test artifacts
+edge-profile-temp/
+test_doc.docx
+test_puppeteer.png
+
+

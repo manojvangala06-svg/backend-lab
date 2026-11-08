@@ -88,3 +88,4 @@ Faculty Exercise Scenario: Students are provided a broken version of the project
   // Fixed:
   const book = await db.get('SELECT * FROM books WHERE id = ?', [req.params.id]);
   ```
+

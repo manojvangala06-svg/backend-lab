@@ -112,3 +112,4 @@ lab3-rest-api/
 3. **Which status code for bad input vs a missing record?**
    - *Bad Input:* `400 Bad Request` (client provided invalid syntax, non-numeric values, or missed required fields).
    - *Missing Record:* `404 Not Found` (request syntax is valid, but the requested resource ID does not exist).
+

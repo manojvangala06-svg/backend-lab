@@ -51,3 +51,4 @@ initAndCommit().catch(err => {
   console.error('Git init/commit failed:', err);
   process.exit(1);
 });
+

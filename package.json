@@ -2,9 +2,11 @@
   "name": "lab3-rest-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'Build complete'",
+    "start": "node server.js",
+    "test": "node test-and-capture.js"
   },
   "keywords": [],
   "author": "",

@@ -21,25 +21,25 @@ app.use((req, res, next) => {
 // Serve static files for documentation showcase (style.css, app.js, etc.)
 app.use(express.static(__dirname));
 
-// Root endpoint: serves interactive showcase for browser, or JSON schema for API clients
+// Root endpoint: serves interactive showcase by default, or JSON schema when requested with application/json
 app.get('/', (req, res) => {
-  if (req.accepts('html')) {
-    return res.sendFile(path.join(__dirname, 'index.html'));
+  if (req.headers.accept && req.headers.accept.includes('application/json')) {
+    return res.status(200).json({
+      message: 'Backend Development Fundamentals - Lab 3 REST API is running!',
+      endpoints: {
+        getAllBooks: 'GET /books',
+        searchBooks: 'GET /books?search_q={query}',
+        filterByPrice: 'GET /books?min_price={min}&max_price={max}',
+        sortBooks: 'GET /books?order_by={column}&order={ASC|DESC}',
+        paginateBooks: 'GET /books?limit={limit}&offset={offset}',
+        getBookById: 'GET /books/:id',
+        createBook: 'POST /books',
+        updateBook: 'PUT /books/:id',
+        deleteBook: 'DELETE /books/:id'
+      }
+    });
   }
-  res.status(200).json({
-    message: 'Backend Development Fundamentals - Lab 3 REST API is running!',
-    endpoints: {
-      getAllBooks: 'GET /books',
-      searchBooks: 'GET /books?search_q={query}',
-      filterByPrice: 'GET /books?min_price={min}&max_price={max}',
-      sortBooks: 'GET /books?order_by={column}&order={ASC|DESC}',
-      paginateBooks: 'GET /books?limit={limit}&offset={offset}',
-      getBookById: 'GET /books/:id',
-      createBook: 'POST /books',
-      updateBook: 'PUT /books/:id',
-      deleteBook: 'DELETE /books/:id'
-    }
-  });
+  return res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Mount books resource routes
@@ -74,9 +74,13 @@ function startServer(port) {
   return server;
 }
 
-if (require.main === module) {
+if (require.main === module && !process.env.VERCEL) {
   startServer(PORT);
 }
 
-module.exports = { app, startServer };
+// Export Express app directly as default export for Vercel Serverless Function compatibility,
+// while preserving .app and .startServer for local testing scripts
+module.exports = app;
+module.exports.app = app;
+module.exports.startServer = startServer;
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "echo 'Build complete'",
+    "build": "node -e \"console.log('Build successful')\"",
     "start": "node server.js",
     "test": "node test-and-capture.js"
   },
